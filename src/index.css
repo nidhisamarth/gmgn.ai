@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -95,9 +96,117 @@
 @layer base {
   * {
     @apply border-border;
+    box-sizing: border-box;
   }
 
   body {
     @apply bg-background text-foreground;
+    /* Improve text rendering on Android */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Prevent zoom on input focus on iOS */
+    -webkit-text-size-adjust: 100%;
+    /* Improve touch scrolling on mobile */
+    -webkit-overflow-scrolling: touch;
+    /* Better rendering on Android Chrome */
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Better scrollbar hiding for all browsers */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Improve touch targets for mobile */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+
+  /* Better button and input styling for mobile */
+  button, input, select, textarea {
+    /* Remove default appearance on iOS */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* Prevent zoom on inputs */
+    font-size: 16px;
+    /* Better touch handling */
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Ensure minimum touch target sizes */
+  button {
+    min-height: 32px;
+    min-width: 32px;
+  }
+
+  /* Improve focus visibility */
+  button:focus-visible, 
+  input:focus-visible, 
+  select:focus-visible, 
+  textarea:focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+  }
+}
+
+/* Additional mobile-specific improvements */
+@media (max-width: 768px) {
+  /* Prevent horizontal scrolling */
+  body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+  
+  /* Better text sizing on small screens */
+  html {
+    font-size: 16px;
+  }
+  
+  /* Improve input sizing on mobile */
+  input, textarea {
+    font-size: 16px !important;
+  }
+
+  /* Ensure flex containers don't overflow */
+  .flex {
+    min-width: 0;
+  }
+}
+
+/* Android-specific improvements for Pixel devices */
+@supports (-webkit-appearance: none) {
+  button {
+    /* Improve button rendering on Android Chrome */
+    -webkit-tap-highlight-color: transparent;
+    transform: translateZ(0);
+  }
+  
+  /* Better flex handling on Android */
+  .flex {
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+  }
+  
+  .flex-shrink-0 {
+    -webkit-flex-shrink: 0 !important;
+  }
+}
+
+/* Pixel 7 specific optimizations */
+@media screen and (device-width: 412px) and (device-height: 915px) and (-webkit-device-pixel-ratio: 2.625) {
+  .flex {
+    align-items: center;
+  }
+  
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
