@@ -1,13 +1,25 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React from 'react';
+import { BuyAmountProvider } from '../contexts/BuyAmountContext';
+import MobileHeader from '../components/mobile/MobileHeader';
+import NavigationTabs from '../components/mobile/NavigationTabs';
+import TrenchesSection from '../components/mobile/TrenchesSection';
+import NewCreationsSection from '../components/mobile/NewCreationsSection';
+import TokenList from '../components/mobile/TokenList';
+import ZagdidTokenCard from '../components/mobile/ZagdidTokenCard';
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <BuyAmountProvider>
+      <div className="min-h-screen bg-black text-white overflow-x-hidden">
+        <MobileHeader />
+        <NavigationTabs />
+        <TrenchesSection />
+        <NewCreationsSection />
+        <ZagdidTokenCard />
+        <TokenList />
       </div>
-    </div>
+    </BuyAmountProvider>
   );
 };
 
