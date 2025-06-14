@@ -4,7 +4,9 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { BuyAmountProvider } from "@/contexts/BuyAmountContext"; // ✅ Add this
+import { BuyAmountProvider } from "@/contexts/BuyAmountContext";
+import { AuthProvider } from "@/contexts/AuthContext";
+import ProtectedRoute from "@/components/ProtectedRoute";
 
 import Index from "./pages/Index";
 import New from "./pages/New";
@@ -13,6 +15,7 @@ import CopyTrade from "./pages/CopyTrade";
 import Monitor from "./pages/Monitor";
 import Follow from "./pages/Follow";
 import Holding from "./pages/Holding";
+import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,21 +26,51 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BuyAmountProvider> {/* ✅ Wrap everything here */}
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/new" element={<New />} />
-              <Route path="/trending" element={<Trending />} />
-              <Route path="/copytrade" element={<CopyTrade />} />
-              <Route path="/monitor" element={<Monitor />} />
-              <Route path="/follow" element={<Follow />} />
-              <Route path="/holding" element={<Holding />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
-        </BuyAmountProvider>
+        <AuthProvider>
+          <BuyAmountProvider>
+            <BrowserRouter>
+              <Routes>
+                <Route path="/auth" element={<Auth />} />
+                <Route path="/" element={
+                  <ProtectedRoute>
+                    <Index />
+                  </ProtectedRoute>
+                } />
+                <Route path="/new" element={
+                  <ProtectedRoute>
+                    <New />
+                  </ProtectedRoute>
+                } />
+                <Route path="/trending" element={
+                  <ProtectedRoute>
+                    <Trending />
+                  </ProtectedRoute>
+                } />
+                <Route path="/copytrade" element={
+                  <ProtectedRoute>
+                    <CopyTrade />
+                  </ProtectedRoute>
+                } />
+                <Route path="/monitor" element={
+                  <ProtectedRoute>
+                    <Monitor />
+                  </ProtectedRoute>
+                } />
+                <Route path="/follow" element={
+                  <ProtectedRoute>
+                    <Follow />
+                  </ProtectedRoute>
+                } />
+                <Route path="/holding" element={
+                  <ProtectedRoute>
+                    <Holding />
+                  </ProtectedRoute>
+                } />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </BrowserRouter>
+          </BuyAmountProvider>
+        </AuthProvider>
       </TooltipProvider>
     </QueryClientProvider>
   </div>
