@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
@@ -22,7 +21,7 @@ const Auth = () => {
   // Redirect if user is already logged in
   useEffect(() => {
     if (user) {
-      navigate('/');
+      navigate('/dashboard');
     }
   }, [user, navigate]);
 
@@ -52,7 +51,7 @@ const Auth = () => {
             title: "Success",
             description: "Logged in successfully!"
           });
-          navigate('/');
+          navigate('/dashboard');
         }
       } else {
         const { error } = await signUp(email, password, fullName);
@@ -102,7 +101,7 @@ const Auth = () => {
         {/* Close button */}
         <button 
           className="absolute top-6 right-6 text-gray-400 hover:text-white transition-colors"
-          onClick={() => navigate('/')}
+          onClick={() => navigate('/dashboard')}
         >
           <X size={20} />
         </button>
