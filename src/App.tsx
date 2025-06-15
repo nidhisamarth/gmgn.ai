@@ -28,7 +28,7 @@ const App = () => (
         <Sonner />
         <AuthProvider>
           <BuyAmountProvider>
-            <BrowserRouter>
+            <BrowserRouter basename="/gmgn.ai">
               <Routes>
                 <Route path="/auth" element={<Auth />} />
                 <Route path="/dashboard" element={
