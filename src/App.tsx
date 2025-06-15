@@ -20,6 +20,9 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+// Only use basename in production
+const basename = import.meta.env.PROD ? "/gmgn.ai" : "";
+
 const App = () => (
   <div className="dark bg-black min-h-screen">
     <QueryClientProvider client={queryClient}>
@@ -28,7 +31,7 @@ const App = () => (
         <Sonner />
         <AuthProvider>
           <BuyAmountProvider>
-            <BrowserRouter basename="/gmgn.ai">
+            <BrowserRouter basename={basename}>
               <Routes>
                 <Route path="/auth" element={<Auth />} />
                 <Route path="/dashboard" element={
