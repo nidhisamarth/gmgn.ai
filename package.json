@@ -10,6 +10,8 @@
     "lint": "eslint .",
     "preview": "vite preview"
     "homepage": "https://nidhisamarth.github.io/gmgn.ai"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
