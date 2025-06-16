@@ -90,10 +90,10 @@ const CopyTradeWalletList = () => {
       {wallets.map((wallet) => (
         <div
           key={wallet.rank}
-          className="flex items-center justify-between py-3 border-b border-gray-800/30 last:border-b-0"
+          className="grid grid-cols-12 gap-4 items-center py-3 border-b border-gray-800/30 last:border-b-0"
         >
-          {/* Left section - Wallet info (matches header "Wallet / SOL Bal") */}
-          <div className="flex items-center gap-2 flex-1 min-w-0">
+          {/* Wallet info section - spans 6 columns */}
+          <div className="col-span-6 flex items-center gap-2">
             {/* Avatar with rank overlay */}
             <div className="relative">
               <div
@@ -124,26 +124,22 @@ const CopyTradeWalletList = () => {
             </div>
           </div>
 
-          {/* Right section - matches header structure exactly */}
-          <div className="flex items-center gap-6 flex-shrink-0">
-            {/* 1D PnL column - matches header "1D PnL" position */}
-            <div className="flex items-center gap-2">
-              <span className="text-green-400 text-sm font-medium">
-                {wallet.pnl}
-              </span>
-            </div>
+          {/* 1D PnL column - spans 2 columns */}
+          <div className="col-span-2 text-center">
+            <span className="text-green-400 text-sm font-medium">
+              {wallet.pnl}
+            </span>
+          </div>
 
-            {/* USD column - matches header "USD" position */}
-            <div className="flex items-center gap-2">
-              <span className="text-green-400 text-sm font-medium">
-                {wallet.usd}
-              </span>
-            </div>
+          {/* USD column - spans 2 columns */}
+          <div className="col-span-2 text-center">
+            <span className="text-green-400 text-sm font-medium">
+              {wallet.usd}
+            </span>
+          </div>
 
-            {/* Filter icon space - matches header filter icon */}
-            <div className="w-4 h-4 flex-shrink-0"></div>
-
-            {/* Copy button */}
+          {/* Copy button - spans 2 columns */}
+          <div className="col-span-2 flex justify-end">
             <Button
               variant="outline"
               size="sm"
