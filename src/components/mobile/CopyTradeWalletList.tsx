@@ -12,7 +12,6 @@ interface WalletItem {
 }
 
 const CopyTradeWalletList = () => {
-  // Only showing top 3 entries as requested
   const wallets: WalletItem[] = [
     {
       rank: 1,
@@ -38,6 +37,42 @@ const CopyTradeWalletList = () => {
       balance: 0.147,
       pnl: "+4.6K%",
       usd: "+$7,026.4",
+      avatar: "🎯",
+      bgColor: "bg-pink-500",
+    },
+    {
+      rank: 4,
+      address: "BEorY...VDm",
+      balance: 11.41,
+      pnl: "+3.6K%",
+      usd: "+$1,654.5",
+      avatar: "🎯",
+      bgColor: "bg-pink-500",
+    },
+    {
+      rank: 5,
+      address: "7oKkk...9Qn",
+      balance: 87.71,
+      pnl: "+2.6K%",
+      usd: "+$2,074.5",
+      avatar: "🎯",
+      bgColor: "bg-pink-500",
+    },
+    {
+      rank: 6,
+      address: "5GsiE...Thi",
+      balance: 0,
+      pnl: "+2.1K%",
+      usd: "+$3,914.9",
+      avatar: "🎯",
+      bgColor: "bg-orange-500",
+    },
+    {
+      rank: 7,
+      address: "D7aAU...X4n",
+      balance: 0.551,
+      pnl: "+2K%",
+      usd: "+$3,212.1",
       avatar: "🎯",
       bgColor: "bg-pink-500",
     },
