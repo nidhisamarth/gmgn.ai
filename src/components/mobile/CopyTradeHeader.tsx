@@ -1,32 +1,43 @@
+import React from "react";
+import { Button } from "@/components/ui/button";
 
-import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
+interface CopyTradeHeaderProps {
+  viewMode: "rank" | "copytrade";
+  onViewModeChange: (mode: "rank" | "copytrade") => void;
+}
 
-const CopyTradeHeader = () => {
-  const [isToggled, setIsToggled] = useState(false);
+const CopyTradeHeader = ({
+  viewMode,
+  onViewModeChange,
+}: CopyTradeHeaderProps) => {
+  const isToggled = viewMode === "copytrade";
 
   return (
     <div className="px-4 py-4 flex items-center justify-between">
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-2">
-          <span className="text-white text-lg font-medium">Rank</span>
-          <div className="flex items-center gap-2">
-            <span className="text-gray-400 text-sm">CopyTrade</span>
-            <button
-              onClick={() => setIsToggled(!isToggled)}
-              className={`w-10 h-6 rounded-full transition-colors relative ${
-                isToggled ? 'bg-blue-500' : 'bg-gray-600'
-              }`}
-            >
-              <div
-                className={`w-4 h-4 bg-white rounded-full absolute top-1 transition-transform ${
-                  isToggled ? 'translate-x-5' : 'translate-x-1'
-                }`}
-              />
-            </button>
-          </div>
+          <button
+            onClick={() => onViewModeChange("rank")}
+            className={`text-lg font-medium transition-colors px-2 py-1 rounded ${
+              viewMode === "rank"
+                ? "text-white bg-gray-800"
+                : "text-gray-400 hover:text-gray-300"
+            }`}
+          >
+            Rank
+          </button>
+          <button
+            onClick={() => onViewModeChange("copytrade")}
+            className={`text-lg font-medium transition-colors px-2 py-1 rounded ${
+              viewMode === "copytrade"
+                ? "text-white bg-gray-800"
+                : "text-gray-400 hover:text-gray-300"
+            }`}
+          >
+            CopyTrade
+          </button>
         </div>
-        
+
         <Button
           variant="outline"
           size="sm"
@@ -36,7 +47,7 @@ const CopyTradeHeader = () => {
           0-Latency Alert
         </Button>
       </div>
-      
+
       <Button
         variant="outline"
         size="sm"

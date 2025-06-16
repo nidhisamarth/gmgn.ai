@@ -1,75 +1,161 @@
-
-import React from 'react';
-import { Button } from '@/components/ui/button';
+import React from "react";
+import { Button } from "@/components/ui/button";
 
 interface WalletItem {
   rank: number;
   address: string;
   balance: number;
   pnl: string;
-  icon: string;
-  hasActivity: boolean;
+  usd: string;
+  avatar: string;
+  bgColor: string;
 }
 
 const CopyTradeWalletList = () => {
   const wallets: WalletItem[] = [
-    { rank: 1, address: '05JSY...xTy', balance: 0.418, pnl: '--', icon: '🐸', hasActivity: true },
-    { rank: 2, address: '6cSx5...UK8', balance: 0, pnl: '--', icon: '🌟', hasActivity: true },
-    { rank: 3, address: '20JMe...BRZ', balance: 0.028, pnl: '--', icon: '🎯', hasActivity: true },
-    { rank: 4, address: '4qP1j...dk9', balance: 0.03, pnl: '--', icon: '💎', hasActivity: true },
-    { rank: 5, address: 'HscRE...rwr', balance: 0.039, pnl: '--', icon: '🚀', hasActivity: true },
-    { rank: 6, address: '5HNeh...rzq', balance: 81.54, pnl: '--', icon: '⭐', hasActivity: true },
-    { rank: 7, address: '7GMZy...upZ', balance: 0.013, pnl: '--', icon: '💫', hasActivity: true },
+    {
+      rank: 1,
+      address: "o5JSY...xTY",
+      balance: 10.32,
+      pnl: "+21.1K%",
+      usd: "+$1,566.5",
+      avatar: "🐸",
+      bgColor: "bg-orange-500",
+    },
+    {
+      rank: 2,
+      address: "GL1q3...xp5",
+      balance: 25.85,
+      pnl: "+13.2K%",
+      usd: "+$3,840.1",
+      avatar: "🎯",
+      bgColor: "bg-pink-500",
+    },
+    {
+      rank: 3,
+      address: "CWYTm...poR",
+      balance: 0.147,
+      pnl: "+4.6K%",
+      usd: "+$7,026.4",
+      avatar: "🎯",
+      bgColor: "bg-pink-500",
+    },
+    {
+      rank: 4,
+      address: "BEorY...VDm",
+      balance: 11.41,
+      pnl: "+3.6K%",
+      usd: "+$1,654.5",
+      avatar: "🎯",
+      bgColor: "bg-pink-500",
+    },
+    {
+      rank: 5,
+      address: "7oKkk...9Qn",
+      balance: 87.71,
+      pnl: "+2.6K%",
+      usd: "+$2,074.5",
+      avatar: "🎯",
+      bgColor: "bg-pink-500",
+    },
+    {
+      rank: 6,
+      address: "5GsiE...Thi",
+      balance: 0,
+      pnl: "+2.1K%",
+      usd: "+$3,914.9",
+      avatar: "🎯",
+      bgColor: "bg-orange-500",
+    },
+    {
+      rank: 7,
+      address: "D7aAU...X4n",
+      balance: 0.551,
+      pnl: "+2K%",
+      usd: "+$3,212.1",
+      avatar: "🎯",
+      bgColor: "bg-pink-500",
+    },
   ];
 
   const getRankSuffix = (rank: number) => {
-    if (rank === 1) return 'st';
-    if (rank === 2) return 'nd';
-    if (rank === 3) return 'rd';
-    return 'th';
+    if (rank === 1) return "st";
+    if (rank === 2) return "nd";
+    if (rank === 3) return "rd";
+    return "th";
   };
 
   return (
     <div className="px-4">
-      {wallets.map((wallet) => (
-        <div key={wallet.rank} className="flex items-center justify-between py-4 border-b border-gray-800/50 last:border-b-0">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2">
-              <div className="bg-gray-700 rounded px-2 py-1 text-xs text-gray-300">
-                {wallet.rank}{getRankSuffix(wallet.rank)}
-              </div>
-              <div className="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center text-sm">
-                {wallet.icon}
-              </div>
-            </div>
-            
-            <div className="flex flex-col">
-              <div className="flex items-center gap-2">
-                <span className="text-white text-sm font-medium">{wallet.address}</span>
-                <div className="w-1 h-1 bg-gray-500 rounded-full" />
-                {wallet.hasActivity && (
-                  <div className="w-2 h-2 bg-green-500 rounded-full" />
-                )}
-              </div>
-              <div className="flex items-center gap-1 text-gray-400 text-xs">
-                <span className="text-gray-500">≡</span>
-                <span>{wallet.balance}</span>
-              </div>
-            </div>
-          </div>
-          
-          <div className="flex items-center gap-4">
-            <span className="text-gray-400 text-sm">{wallet.pnl}</span>
-            <Button
-              variant="outline"
-              size="sm"
-              className="bg-transparent border-gray-600 text-white hover:bg-gray-800 text-sm px-4 py-1.5 h-auto"
+      <table className="w-full">
+        <tbody>
+          {wallets.map((wallet) => (
+            <tr
+              key={wallet.rank}
+              className="border-b border-gray-800/30 last:border-b-0"
             >
-              Copy
-            </Button>
-          </div>
-        </div>
-      ))}
+              {/* Wallet Info Column */}
+              <td className="py-3 pr-4 w-1/2">
+                <div className="flex items-center gap-2">
+                  <div className="relative">
+                    <div
+                      className={`w-10 h-10 rounded-full ${wallet.bgColor} flex items-center justify-center text-sm flex-shrink-0`}
+                    >
+                      {wallet.avatar}
+                    </div>
+                    <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-amber-500 text-black text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[28px] text-center leading-none">
+                      {wallet.rank}
+                      {getRankSuffix(wallet.rank)}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col min-w-0 flex-1">
+                    <div className="flex items-center gap-2">
+                      <span className="text-white text-sm font-medium">
+                        {wallet.address}
+                      </span>
+                      <span className="text-green-400">🔗</span>
+                      <span className="text-green-400">🌿</span>
+                    </div>
+                    <div className="flex items-center gap-1 text-gray-400 text-xs">
+                      <span className="text-gray-500">≡</span>
+                      <span>{wallet.balance}</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+
+              {/* 1D PnL Column */}
+              <td className="py-3 text-center w-20">
+                <span className="text-green-400 text-sm font-medium">
+                  {wallet.pnl}
+                </span>
+              </td>
+
+              {/* USD Column */}
+              <td className="py-3 text-center w-24">
+                <span className="text-green-400 text-sm font-medium">
+                  {wallet.usd}
+                </span>
+              </td>
+
+              {/* Filter Space */}
+              <td className="py-3 w-4"></td>
+
+              {/* Copy Button Column */}
+              <td className="py-3">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="bg-transparent border-gray-600 text-white hover:bg-gray-800 text-sm px-4 py-2 h-auto"
+                >
+                  Copy
+                </Button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
