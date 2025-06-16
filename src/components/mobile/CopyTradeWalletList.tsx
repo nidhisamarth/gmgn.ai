@@ -87,75 +87,71 @@ const CopyTradeWalletList = () => {
 
   return (
     <div className="px-4">
-      <table className="w-full">
-        <tbody>
-          {wallets.map((wallet) => (
-            <tr
-              key={wallet.rank}
-              className="border-b border-gray-800/30 last:border-b-0"
+      {wallets.map((wallet) => (
+        <div
+          key={wallet.rank}
+          className="border-b border-gray-800/30 last:border-b-0"
+        >
+          <div className="flex items-center py-3">
+            {/* Wallet Info - takes up remaining space */}
+            <div
+              className="flex items-center gap-2 min-w-0"
+              style={{ width: "50%" }}
             >
-              {/* Wallet Info Column */}
-              <td className="py-3 pr-4">
-                <div className="flex items-center gap-2">
-                  <div className="relative">
-                    <div
-                      className={`w-10 h-10 rounded-full ${wallet.bgColor} flex items-center justify-center text-sm flex-shrink-0`}
-                    >
-                      {wallet.avatar}
-                    </div>
-                    <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-amber-500 text-black text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[28px] text-center leading-none">
-                      {wallet.rank}
-                      {getRankSuffix(wallet.rank)}
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col min-w-0 flex-1">
-                    <div className="flex items-center gap-2">
-                      <span className="text-white text-sm font-medium">
-                        {wallet.address}
-                      </span>
-                      <span className="text-green-400">🔗</span>
-                      <span className="text-green-400">🌿</span>
-                    </div>
-                    <div className="flex items-center gap-1 text-gray-400 text-xs">
-                      <span className="text-gray-500">≡</span>
-                      <span>{wallet.balance}</span>
-                    </div>
-                  </div>
-                </div>
-              </td>
-
-              {/* 1D PnL Column */}
-              <td className="py-3 text-center w-20">
-                <span className="text-green-400 text-sm font-medium">
-                  {wallet.pnl}
-                </span>
-              </td>
-
-              {/* USD Column */}
-              <td className="py-3 text-center w-24">
-                <span className="text-green-400 text-sm font-medium">
-                  {wallet.usd}
-                </span>
-              </td>
-
-              {/* Filter Space */}
-              <td className="py-3 w-4"></td>
-
-              {/* Copy Button Column */}
-              <td className="py-3">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="bg-transparent border-gray-600 text-white hover:bg-gray-800 text-sm px-4 py-2 h-auto"
+              <div className="relative">
+                <div
+                  className={`w-10 h-10 rounded-full ${wallet.bgColor} flex items-center justify-center text-sm flex-shrink-0`}
                 >
-                  Copy
-                </Button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+                  {wallet.avatar}
+                </div>
+                <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-amber-500 text-black text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[28px] text-center leading-none">
+                  {wallet.rank}
+                  {getRankSuffix(wallet.rank)}
+                </div>
+              </div>
+
+              <div className="flex flex-col min-w-0 flex-1">
+                <div className="flex items-center gap-2">
+                  <span className="text-white text-sm font-medium">
+                    {wallet.address}
+                  </span>
+                  <span className="text-green-400">🔗</span>
+                  <span className="text-green-400">🌿</span>
+                </div>
+                <div className="flex items-center gap-1 text-gray-400 text-xs">
+                  <span className="text-gray-500">≡</span>
+                  <span>{wallet.balance}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* 1D PnL Column */}
+            <div className="text-center" style={{ width: "15%" }}>
+              <span className="text-green-400 text-sm font-medium">
+                {wallet.pnl}
+              </span>
+            </div>
+
+            {/* USD Column */}
+            <div className="text-center" style={{ width: "20%" }}>
+              <span className="text-green-400 text-sm font-medium">
+                {wallet.usd}
+              </span>
+            </div>
+
+            {/* Copy Button */}
+            <div className="text-right" style={{ width: "15%" }}>
+              <Button
+                variant="outline"
+                size="sm"
+                className="bg-transparent border-gray-600 text-white hover:bg-gray-800 text-sm px-4 py-2 h-auto"
+              >
+                Copy
+              </Button>
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   );
 };
