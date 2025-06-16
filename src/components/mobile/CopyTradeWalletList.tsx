@@ -92,7 +92,7 @@ const CopyTradeWalletList = () => {
           key={wallet.rank}
           className="flex items-center justify-between py-3 border-b border-gray-800/30 last:border-b-0"
         >
-          {/* Left section - Wallet info */}
+          {/* Left section - Wallet info (matches header flex-1) */}
           <div className="flex items-center gap-3 flex-1 min-w-0">
             {/* Avatar with rank overlay */}
             <div className="relative">
@@ -124,30 +124,30 @@ const CopyTradeWalletList = () => {
             </div>
           </div>
 
-          {/* Right section - 1D PnL and USD columns + Copy button */}
+          {/* Right section - matching header structure exactly */}
           <div className="flex items-center gap-6 flex-shrink-0">
-            {/* 1D PnL column */}
-            <div className="flex justify-center min-w-[80px]">
+            {/* 1D PnL column - matches header "1D PnL" position */}
+            <div className="flex items-center gap-2">
               <span className="text-green-400 text-sm font-medium">
                 {wallet.pnl}
               </span>
             </div>
 
-            {/* USD column */}
-            <div className="flex justify-center min-w-[80px]">
+            {/* USD column - matches header "USD" position */}
+            <div className="flex items-center gap-2">
               <span className="text-green-400 text-sm font-medium">
                 {wallet.usd}
               </span>
             </div>
 
-            {/* Filter icon space */}
-            <div className="w-4"></div>
+            {/* Filter icon space - matches header filter icon */}
+            <div className="w-4 h-4 flex-shrink-0"></div>
 
-            {/* Copy button */}
+            {/* Copy button area */}
             <Button
               variant="outline"
               size="sm"
-              className="bg-transparent border-gray-600 text-white hover:bg-gray-800 text-sm px-4 py-2 h-auto min-w-[60px]"
+              className="bg-transparent border-gray-600 text-white hover:bg-gray-800 text-sm px-4 py-2 h-auto"
             >
               Copy
             </Button>
