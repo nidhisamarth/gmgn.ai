@@ -1,9 +1,16 @@
+import React from "react";
+import { Button } from "@/components/ui/button";
 
-import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
+interface CopyTradeHeaderProps {
+  viewMode: "rank" | "copytrade";
+  onViewModeChange: (mode: "rank" | "copytrade") => void;
+}
 
-const CopyTradeHeader = () => {
-  const [isToggled, setIsToggled] = useState(false);
+const CopyTradeHeader = ({
+  viewMode,
+  onViewModeChange,
+}: CopyTradeHeaderProps) => {
+  const isToggled = viewMode === "copytrade";
 
   return (
     <div className="px-4 py-4 flex items-center justify-between">
@@ -13,20 +20,20 @@ const CopyTradeHeader = () => {
           <div className="flex items-center gap-2">
             <span className="text-gray-400 text-sm">CopyTrade</span>
             <button
-              onClick={() => setIsToggled(!isToggled)}
+              onClick={() => onViewModeChange(isToggled ? "rank" : "copytrade")}
               className={`w-10 h-6 rounded-full transition-colors relative ${
-                isToggled ? 'bg-blue-500' : 'bg-gray-600'
+                isToggled ? "bg-blue-500" : "bg-gray-600"
               }`}
             >
               <div
                 className={`w-4 h-4 bg-white rounded-full absolute top-1 transition-transform ${
-                  isToggled ? 'translate-x-5' : 'translate-x-1'
+                  isToggled ? "translate-x-5" : "translate-x-1"
                 }`}
               />
             </button>
           </div>
         </div>
-        
+
         <Button
           variant="outline"
           size="sm"
@@ -36,7 +43,7 @@ const CopyTradeHeader = () => {
           0-Latency Alert
         </Button>
       </div>
-      
+
       <Button
         variant="outline"
         size="sm"
