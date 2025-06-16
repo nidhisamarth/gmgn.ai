@@ -86,25 +86,26 @@ const CopyTradeWalletList = () => {
   };
 
   return (
-    <div className="px-4 pb-4">
+    <div className="px-4">
       {wallets.map((wallet) => (
         <div
           key={wallet.rank}
           className="flex items-center justify-between py-3 border-b border-gray-800/30 last:border-b-0"
         >
-          {/* Left section - Rank, Avatar, Address, Balance */}
+          {/* Left section - Wallet info */}
           <div className="flex items-center gap-3 flex-1 min-w-0">
-            {/* Rank badge */}
-            <div className="bg-amber-600 text-black text-xs font-bold px-2 py-1 rounded min-w-[32px] text-center">
-              {wallet.rank}
-              {getRankSuffix(wallet.rank)}
-            </div>
-
-            {/* Avatar */}
-            <div
-              className={`w-8 h-8 rounded-full ${wallet.bgColor} flex items-center justify-center text-sm flex-shrink-0`}
-            >
-              {wallet.avatar}
+            {/* Avatar with rank overlay */}
+            <div className="relative">
+              <div
+                className={`w-10 h-10 rounded-full ${wallet.bgColor} flex items-center justify-center text-sm flex-shrink-0`}
+              >
+                {wallet.avatar}
+              </div>
+              {/* Rank badge overlay */}
+              <div className="absolute -top-1 -right-1 bg-amber-500 text-black text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[24px] text-center leading-none">
+                {wallet.rank}
+                {getRankSuffix(wallet.rank)}
+              </div>
             </div>
 
             {/* Address and Balance */}
@@ -123,7 +124,7 @@ const CopyTradeWalletList = () => {
             </div>
           </div>
 
-          {/* Center section - PnL */}
+          {/* Center section - 1D PnL column */}
           <div className="flex flex-col items-center min-w-[80px] mx-4">
             <span className="text-green-400 text-sm font-medium">
               {wallet.pnl}
