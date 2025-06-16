@@ -127,14 +127,14 @@ const CopyTradeWalletList = () => {
           {/* Right section - 1D PnL and USD columns + Copy button */}
           <div className="flex items-center gap-6 flex-shrink-0">
             {/* 1D PnL column */}
-            <div className="flex flex-col items-center min-w-[80px]">
+            <div className="flex justify-center min-w-[80px]">
               <span className="text-green-400 text-sm font-medium">
                 {wallet.pnl}
               </span>
             </div>
 
             {/* USD column */}
-            <div className="flex flex-col items-center min-w-[80px]">
+            <div className="flex justify-center min-w-[80px]">
               <span className="text-green-400 text-sm font-medium">
                 {wallet.usd}
               </span>
