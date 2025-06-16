@@ -90,11 +90,11 @@ const CopyTradeWalletList = () => {
       {wallets.map((wallet) => (
         <div
           key={wallet.rank}
-          className="relative py-3 border-b border-gray-800/30 last:border-b-0"
+          className="py-3 border-b border-gray-800/30 last:border-b-0"
         >
-          {/* Wallet Info Section */}
-          <div className="flex items-center">
-            <div className="flex items-center gap-2 w-1/2">
+          <div className="flex items-center justify-between">
+            {/* Left: Wallet Info */}
+            <div className="flex items-center gap-2 flex-1">
               <div className="relative">
                 <div
                   className={`w-10 h-10 rounded-full ${wallet.bgColor} flex items-center justify-center text-sm flex-shrink-0`}
@@ -107,7 +107,7 @@ const CopyTradeWalletList = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col min-w-0 flex-1">
+              <div className="flex flex-col">
                 <div className="flex items-center gap-2">
                   <span className="text-white text-sm font-medium">
                     {wallet.address}
@@ -121,34 +121,22 @@ const CopyTradeWalletList = () => {
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Positioned Data Columns */}
-          <div className="absolute top-3 right-0 flex items-center">
-            {/* 1D PnL - positioned to align with header */}
-            <div className="w-20 text-center mr-6">
-              <span className="text-green-400 text-sm font-medium">
-                {wallet.pnl}
-              </span>
-            </div>
-
-            {/* USD - positioned to align with header */}
-            <div className="w-24 text-center mr-4">
-              <span className="text-green-400 text-sm font-medium">
-                {wallet.usd}
-              </span>
-            </div>
-
-            {/* Copy Button */}
-            <div className="w-16">
-              <Button
-                variant="outline"
-                size="sm"
-                className="bg-transparent border-gray-600 text-white hover:bg-gray-800 text-sm px-4 py-2 h-auto"
-              >
-                Copy
-              </Button>
-            </div>
+            {/* Right: Three separate inline elements */}
+            <span className="text-green-400 text-sm font-medium mx-4">
+              {wallet.pnl}
+            </span>
+            <span className="text-green-400 text-sm font-medium mx-4">
+              {wallet.usd}
+            </span>
+            <div className="w-4 mx-2"></div>
+            <Button
+              variant="outline"
+              size="sm"
+              className="bg-transparent border-gray-600 text-white hover:bg-gray-800 text-sm px-4 py-2 h-auto"
+            >
+              Copy
+            </Button>
           </div>
         </div>
       ))}
