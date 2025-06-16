@@ -90,60 +90,64 @@ const CopyTradeWalletList = () => {
       {wallets.map((wallet) => (
         <div
           key={wallet.rank}
-          className="flex items-center justify-between py-3 border-b border-gray-800/30 last:border-b-0"
+          className="py-3 border-b border-gray-800/30 last:border-b-0"
         >
-          {/* Left section - Wallet info (matches header flex-1) */}
-          <div className="flex items-center gap-3 flex-1 min-w-0">
-            {/* Avatar with rank overlay */}
-            <div className="relative">
-              <div
-                className={`w-10 h-10 rounded-full ${wallet.bgColor} flex items-center justify-center text-sm flex-shrink-0`}
-              >
-                {wallet.avatar}
+          <div className="flex items-center justify-between text-gray-400 text-sm">
+            {/* Left section - Wallet info (matches header structure exactly) */}
+            <div className="flex items-center gap-2 flex-1 min-w-0">
+              {/* Avatar with rank overlay */}
+              <div className="relative">
+                <div
+                  className={`w-10 h-10 rounded-full ${wallet.bgColor} flex items-center justify-center text-sm flex-shrink-0`}
+                >
+                  {wallet.avatar}
+                </div>
+                {/* Rank badge overlay */}
+                <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-amber-500 text-black text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[28px] text-center leading-none">
+                  {wallet.rank}
+                  {getRankSuffix(wallet.rank)}
+                </div>
               </div>
-              {/* Rank badge overlay - positioned at top center */}
-              <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-amber-500 text-black text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[28px] text-center leading-none">
-                {wallet.rank}
-                {getRankSuffix(wallet.rank)}
+
+              {/* Address and Balance */}
+              <div className="flex flex-col min-w-0 flex-1">
+                <div className="flex items-center gap-2">
+                  <span className="text-white text-sm font-medium">
+                    {wallet.address}
+                  </span>
+                  <span className="text-green-400">🔗</span>
+                  <span className="text-green-400">🌿</span>
+                </div>
+                <div className="flex items-center gap-1 text-gray-400 text-xs">
+                  <span className="text-gray-500">≡</span>
+                  <span>{wallet.balance}</span>
+                </div>
               </div>
             </div>
 
-            {/* Address and Balance */}
-            <div className="flex flex-col min-w-0 flex-1">
+            {/* Right section - matches header structure exactly */}
+            <div className="flex items-center gap-6 flex-shrink-0">
+              {/* 1D PnL column */}
               <div className="flex items-center gap-2">
-                <span className="text-white text-sm font-medium">
-                  {wallet.address}
+                <span className="text-green-400 text-sm font-medium">
+                  {wallet.pnl}
                 </span>
-                <span className="text-green-400">🔗</span>
-                <span className="text-green-400">🌿</span>
               </div>
-              <div className="flex items-center gap-1 text-gray-400 text-xs">
-                <span className="text-gray-500">≡</span>
-                <span>{wallet.balance}</span>
+
+              {/* USD column */}
+              <div className="flex items-center gap-2">
+                <span className="text-green-400 text-sm font-medium">
+                  {wallet.usd}
+                </span>
               </div>
+
+              {/* Filter icon space */}
+              <div className="w-4 h-4 flex-shrink-0"></div>
             </div>
           </div>
 
-          {/* Right section - matching header structure exactly */}
-          <div className="flex items-center gap-6 flex-shrink-0">
-            {/* 1D PnL column - matches header "1D PnL" position */}
-            <div className="flex items-center gap-2">
-              <span className="text-green-400 text-sm font-medium">
-                {wallet.pnl}
-              </span>
-            </div>
-
-            {/* USD column - matches header "USD" position */}
-            <div className="flex items-center gap-2">
-              <span className="text-green-400 text-sm font-medium">
-                {wallet.usd}
-              </span>
-            </div>
-
-            {/* Filter icon space - matches header filter icon */}
-            <div className="w-4 h-4 flex-shrink-0"></div>
-
-            {/* Copy button area */}
+          {/* Copy button row - separate from the data row */}
+          <div className="flex justify-end mt-2">
             <Button
               variant="outline"
               size="sm"
