@@ -90,14 +90,11 @@ const CopyTradeWalletList = () => {
       {wallets.map((wallet) => (
         <div
           key={wallet.rank}
-          className="border-b border-gray-800/30 last:border-b-0"
+          className="relative py-3 border-b border-gray-800/30 last:border-b-0"
         >
-          <div className="flex items-center py-3">
-            {/* Wallet Info - takes up remaining space */}
-            <div
-              className="flex items-center gap-2 min-w-0"
-              style={{ width: "50%" }}
-            >
+          {/* Wallet Info Section */}
+          <div className="flex items-center">
+            <div className="flex items-center gap-2 w-1/2">
               <div className="relative">
                 <div
                   className={`w-10 h-10 rounded-full ${wallet.bgColor} flex items-center justify-center text-sm flex-shrink-0`}
@@ -124,23 +121,26 @@ const CopyTradeWalletList = () => {
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* 1D PnL Column */}
-            <div className="text-center" style={{ width: "15%" }}>
+          {/* Positioned Data Columns */}
+          <div className="absolute top-3 right-0 flex items-center">
+            {/* 1D PnL - positioned to align with header */}
+            <div className="w-20 text-center mr-6">
               <span className="text-green-400 text-sm font-medium">
                 {wallet.pnl}
               </span>
             </div>
 
-            {/* USD Column */}
-            <div className="text-center" style={{ width: "20%" }}>
+            {/* USD - positioned to align with header */}
+            <div className="w-24 text-center mr-4">
               <span className="text-green-400 text-sm font-medium">
                 {wallet.usd}
               </span>
             </div>
 
             {/* Copy Button */}
-            <div className="text-right" style={{ width: "15%" }}>
+            <div className="w-16">
               <Button
                 variant="outline"
                 size="sm"
