@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -20,8 +19,8 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-// Only use basename in production
-const basename = import.meta.env.PROD ? "/gmgn.ai" : "";
+// Use basename consistently to match Vite base configuration
+const basename = "/gmgn.ai";
 
 const App = () => (
   <div className="dark bg-black min-h-screen">
@@ -34,41 +33,62 @@ const App = () => (
             <BrowserRouter basename={basename}>
               <Routes>
                 <Route path="/auth" element={<Auth />} />
-                <Route path="/dashboard" element={
-                  <ProtectedRoute>
-                    <Index />
-                  </ProtectedRoute>
-                } />
-                <Route path="/new" element={
-                  <ProtectedRoute>
-                    <New />
-                  </ProtectedRoute>
-                } />
-                <Route path="/trending" element={
-                  <ProtectedRoute>
-                    <Trending />
-                  </ProtectedRoute>
-                } />
-                <Route path="/copytrade" element={
-                  <ProtectedRoute>
-                    <CopyTrade />
-                  </ProtectedRoute>
-                } />
-                <Route path="/monitor" element={
-                  <ProtectedRoute>
-                    <Monitor />
-                  </ProtectedRoute>
-                } />
-                <Route path="/follow" element={
-                  <ProtectedRoute>
-                    <Follow />
-                  </ProtectedRoute>
-                } />
-                <Route path="/holding" element={
-                  <ProtectedRoute>
-                    <Holding />
-                  </ProtectedRoute>
-                } />
+                <Route
+                  path="/dashboard"
+                  element={
+                    <ProtectedRoute>
+                      <Index />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/new"
+                  element={
+                    <ProtectedRoute>
+                      <New />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/trending"
+                  element={
+                    <ProtectedRoute>
+                      <Trending />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/copytrade"
+                  element={
+                    <ProtectedRoute>
+                      <CopyTrade />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/monitor"
+                  element={
+                    <ProtectedRoute>
+                      <Monitor />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/follow"
+                  element={
+                    <ProtectedRoute>
+                      <Follow />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/holding"
+                  element={
+                    <ProtectedRoute>
+                      <Holding />
+                    </ProtectedRoute>
+                  }
+                />
                 <Route path="/" element={<Navigate to="/auth" replace />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
