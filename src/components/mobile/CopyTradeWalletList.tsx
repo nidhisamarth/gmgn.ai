@@ -101,8 +101,8 @@ const CopyTradeWalletList = () => {
               >
                 {wallet.avatar}
               </div>
-              {/* Rank badge overlay */}
-              <div className="absolute -top-1 -right-1 bg-amber-500 text-black text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[24px] text-center leading-none">
+              {/* Rank badge overlay - positioned at top center */}
+              <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-amber-500 text-black text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[28px] text-center leading-none">
                 {wallet.rank}
                 {getRankSuffix(wallet.rank)}
               </div>
