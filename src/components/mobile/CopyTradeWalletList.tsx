@@ -90,10 +90,14 @@ const CopyTradeWalletList = () => {
       {wallets.map((wallet) => (
         <div
           key={wallet.rank}
-          className="grid grid-cols-12 gap-4 items-center py-3 border-b border-gray-800/30 last:border-b-0"
+          className="flex items-center py-3 border-b border-gray-800/30 last:border-b-0"
+          style={{ width: "100%" }}
         >
-          {/* Wallet info section - spans 6 columns */}
-          <div className="col-span-6 flex items-center gap-2">
+          {/* Wallet info section - flexible width */}
+          <div
+            className="flex items-center gap-2"
+            style={{ flex: "1 1 0%", minWidth: 0 }}
+          >
             {/* Avatar with rank overlay */}
             <div className="relative">
               <div
@@ -124,26 +128,29 @@ const CopyTradeWalletList = () => {
             </div>
           </div>
 
-          {/* 1D PnL column - spans 2 columns */}
-          <div className="col-span-2 text-center">
+          {/* 1D PnL column - fixed width */}
+          <div className="text-center" style={{ width: "70px", flexShrink: 0 }}>
             <span className="text-green-400 text-sm font-medium">
               {wallet.pnl}
             </span>
           </div>
 
-          {/* USD column - spans 2 columns */}
-          <div className="col-span-2 text-center">
+          {/* USD column - fixed width */}
+          <div className="text-center" style={{ width: "80px", flexShrink: 0 }}>
             <span className="text-green-400 text-sm font-medium">
               {wallet.usd}
             </span>
           </div>
 
-          {/* Copy button - spans 2 columns */}
-          <div className="col-span-2 flex justify-end">
+          {/* Filter space */}
+          <div style={{ width: "16px", flexShrink: 0 }}></div>
+
+          {/* Copy button - fixed width */}
+          <div style={{ width: "70px", flexShrink: 0 }}>
             <Button
               variant="outline"
               size="sm"
-              className="bg-transparent border-gray-600 text-white hover:bg-gray-800 text-sm px-4 py-2 h-auto"
+              className="bg-transparent border-gray-600 text-white hover:bg-gray-800 text-sm px-4 py-2 h-auto w-full"
             >
               Copy
             </Button>
