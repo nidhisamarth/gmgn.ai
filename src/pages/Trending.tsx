@@ -1,21 +1,21 @@
 
 import React from 'react';
-import MobileHeader from '../components/mobile/MobileHeader';
+import TrendingHeader from '../components/mobile/TrendingHeader';
 import NavigationTabs from '../components/mobile/NavigationTabs';
-import TrendingFilters from '../components/mobile/TrendingFilters';
-import TrendingDeveloperFilters from '../components/mobile/TrendingDeveloperFilters';
-import TrendingTokenHeaders from '../components/mobile/TrendingTokenHeaders';
-import TrendingTokenList from '../components/mobile/TrendingTokenList';
+import TrendingFiltersSection from '../components/mobile/TrendingFiltersSection';
+import TrendingControlsSection from '../components/mobile/TrendingControlsSection';
+import TrendingTableHeaders from '../components/mobile/TrendingTableHeaders';
+import TrendingTokenTable from '../components/mobile/TrendingTokenTable';
 
 const Trending = () => {
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
-      <MobileHeader />
+      <TrendingHeader />
       <NavigationTabs />
-      <TrendingFilters />
-      <TrendingDeveloperFilters />
-      <TrendingTokenHeaders />
-      <TrendingTokenList />
+      <TrendingFiltersSection />
+      <TrendingControlsSection />
+      <TrendingTableHeaders />
+      <TrendingTokenTable />
     </div>
   );
 };
