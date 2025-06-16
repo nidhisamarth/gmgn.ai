@@ -91,45 +91,77 @@ const CopyTradeWalletList = () => {
         <div
           key={wallet.rank}
           className="py-3 border-b border-gray-800/30 last:border-b-0"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
         >
-          <div className="flex items-center justify-between">
-            {/* Left: Wallet Info */}
-            <div className="flex items-center gap-2 flex-1">
-              <div className="relative">
-                <div
-                  className={`w-10 h-10 rounded-full ${wallet.bgColor} flex items-center justify-center text-sm flex-shrink-0`}
-                >
-                  {wallet.avatar}
-                </div>
-                <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-amber-500 text-black text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[28px] text-center leading-none">
-                  {wallet.rank}
-                  {getRankSuffix(wallet.rank)}
-                </div>
+          {/* Wallet Info */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              flex: "1",
+              minWidth: 0,
+            }}
+          >
+            <div style={{ position: "relative" }}>
+              <div
+                className={`w-10 h-10 rounded-full ${wallet.bgColor} flex items-center justify-center text-sm flex-shrink-0`}
+              >
+                {wallet.avatar}
               </div>
-
-              <div className="flex flex-col">
-                <div className="flex items-center gap-2">
-                  <span className="text-white text-sm font-medium">
-                    {wallet.address}
-                  </span>
-                  <span className="text-green-400">🔗</span>
-                  <span className="text-green-400">🌿</span>
-                </div>
-                <div className="flex items-center gap-1 text-gray-400 text-xs">
-                  <span className="text-gray-500">≡</span>
-                  <span>{wallet.balance}</span>
-                </div>
+              <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-amber-500 text-black text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[28px] text-center leading-none">
+                {wallet.rank}
+                {getRankSuffix(wallet.rank)}
               </div>
             </div>
 
-            {/* Right: Three separate inline elements */}
-            <span className="text-green-400 text-sm font-medium mx-4">
-              {wallet.pnl}
-            </span>
-            <span className="text-green-400 text-sm font-medium mx-4">
-              {wallet.usd}
-            </span>
-            <div className="w-4 mx-2"></div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                minWidth: 0,
+                flex: 1,
+              }}
+            >
+              <div
+                style={{ display: "flex", alignItems: "center", gap: "8px" }}
+              >
+                <span className="text-white text-sm font-medium">
+                  {wallet.address}
+                </span>
+                <span className="text-green-400">🔗</span>
+                <span className="text-green-400">🌿</span>
+              </div>
+              <div
+                style={{ display: "flex", alignItems: "center", gap: "4px" }}
+                className="text-gray-400 text-xs"
+              >
+                <span className="text-gray-500">≡</span>
+                <span>{wallet.balance}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Data columns with explicit styling */}
+          <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
+            <div style={{ width: "70px", textAlign: "center" }}>
+              <span className="text-green-400 text-sm font-medium">
+                {wallet.pnl}
+              </span>
+            </div>
+
+            <div style={{ width: "80px", textAlign: "center" }}>
+              <span className="text-green-400 text-sm font-medium">
+                {wallet.usd}
+              </span>
+            </div>
+
+            <div style={{ width: "16px" }}></div>
+
             <Button
               variant="outline"
               size="sm"
