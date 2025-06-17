@@ -6,6 +6,7 @@ import CopyTradeHeader from "../components/mobile/CopyTradeHeader";
 import CopyTradeFilters from "../components/mobile/CopyTradeFilters";
 import CopyTradeTableHeader from "../components/mobile/CopyTradeTableHeader";
 import CopyTradeWalletList from "../components/mobile/CopyTradeWalletList";
+import CopyTradeModal from "../components/mobile/CopyTradeModal";
 import { Button } from "@/components/ui/button";
 
 const CopyTrade = () => {
@@ -13,6 +14,7 @@ const CopyTrade = () => {
   const [isSolMode, setIsSolMode] = useState(false);
   const [sortByBalance, setSortByBalance] = useState(false);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const [isCopyTradeModalOpen, setIsCopyTradeModalOpen] = useState(false);
 
   const handleViewModeChange = (mode: "rank" | "copytrade") => {
     setViewMode(mode);
@@ -120,12 +122,21 @@ const CopyTrade = () => {
           </p>
 
           {/* Copy trade button */}
-          <Button className="bg-gray-800 hover:bg-gray-700 border border-gray-600 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+          <Button
+            onClick={() => setIsCopyTradeModalOpen(true)}
+            className="bg-gray-800 hover:bg-gray-700 border border-gray-600 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+          >
             <span className="mr-2 font-bold text-lg">C</span>
             Copy trade
           </Button>
         </div>
       )}
+
+      {/* Copy Trade Modal */}
+      <CopyTradeModal
+        isOpen={isCopyTradeModalOpen}
+        onClose={() => setIsCopyTradeModalOpen(false)}
+      />
     </div>
   );
 };
