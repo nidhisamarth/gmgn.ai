@@ -22,7 +22,7 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 // Use basename consistently to match Vite base configuration
-const basename = "/gmgn.ai";
+const basename = "/gmgn.ai/auth";
 
 const App = () => (
   <div className="dark bg-black min-h-screen">
