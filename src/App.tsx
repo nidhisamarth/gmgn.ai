@@ -22,7 +22,7 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 // Use basename consistently to match Vite base configuration
-const basename = "/gmgn.ai/auth";
+const basename = "/gmgn.ai/";
 
 const App = () => (
   <div className="dark bg-black min-h-screen">
@@ -34,6 +34,7 @@ const App = () => (
           <BuyAmountProvider>
             <BrowserRouter basename={basename}>
               <Routes>
+                  <Route path="/" element={<Auth />} />
                 <Route path="/auth" element={<Auth />} />
                 <Route path="/auth/confirm" element={<EmailConfirm />} />
                 <Route
