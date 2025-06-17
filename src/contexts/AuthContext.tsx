@@ -71,7 +71,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     // Handle both development and production URLs with correct base path
     const baseUrl = window.location.origin;
     const basePath = import.meta.env.PROD ? "/gmgn.ai" : "";
-    const redirectUrl = `${baseUrl}${basePath}/dashboard`;
+    const redirectUrl = `${baseUrl}${basePath}/auth/confirm`;
 
     const { error } = await supabase.auth.signUp({
       email,

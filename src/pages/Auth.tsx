@@ -19,9 +19,9 @@ const Auth = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
 
-  // Redirect if user is already logged in
+  // Only redirect authenticated users from /auth route, not from root
   useEffect(() => {
-    if (user) {
+    if (user && window.location.pathname.endsWith("/auth")) {
       navigate("/dashboard");
     }
   }, [user, navigate]);

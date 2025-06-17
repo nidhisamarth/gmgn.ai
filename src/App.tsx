@@ -34,7 +34,7 @@ const App = () => (
           <BuyAmountProvider>
             <BrowserRouter basename={basename}>
               <Routes>
-                  <Route path="/" element={<Auth />} />
+                <Route path="/" element={<Auth />} />
                 <Route path="/auth" element={<Auth />} />
                 <Route path="/auth/confirm" element={<EmailConfirm />} />
                 <Route
@@ -101,7 +101,6 @@ const App = () => (
                     </ProtectedRoute>
                   }
                 />
-                <Route path="/" element={<Navigate to="/auth" replace />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </BrowserRouter>

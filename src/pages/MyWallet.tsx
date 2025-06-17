@@ -51,7 +51,7 @@ const MyWallet = () => {
             <div>
               <div className="flex items-center gap-3 mb-2">
                 <span className="text-xl font-semibold text-white">
-                  A4Z7C...H6n
+                  AZZFC-H6n
                 </span>
                 <button className="bg-green-500 hover:bg-green-600 text-black px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
                   <span>❌</span>
@@ -59,7 +59,9 @@ const MyWallet = () => {
                 </button>
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-400">
-                <span>A4Z7CX</span>
+                <span>
+                  A4Z7CXr48wPHeKe7KAbSLy34S8dGMOAqQMNFd5uQqr34yKvnGfni
+                </span>
                 <Copy className="w-3 h-3 cursor-pointer hover:text-white" />
                 <div className="w-3 h-3 bg-gray-600 rounded"></div>
                 <div className="w-3 h-3 bg-gray-600 rounded"></div>

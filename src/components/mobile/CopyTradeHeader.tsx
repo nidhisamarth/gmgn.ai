@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
+import CreateTradeModal from "./CreateTradeModal";
 
 interface CopyTradeHeaderProps {
   viewMode: "rank" | "copytrade";
@@ -10,6 +11,7 @@ const CopyTradeHeader = ({
   viewMode,
   onViewModeChange,
 }: CopyTradeHeaderProps) => {
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const isToggled = viewMode === "copytrade";
 
   return (
@@ -49,6 +51,7 @@ const CopyTradeHeader = ({
       </div>
 
       <Button
+        onClick={() => setIsCreateModalOpen(true)}
         variant="outline"
         size="sm"
         className="bg-gray-800 border-gray-600 text-white hover:bg-gray-700 text-sm px-4 py-2 h-auto"
@@ -56,6 +59,11 @@ const CopyTradeHeader = ({
         <span className="font-bold mr-1">C</span>
         Create
       </Button>
+
+      <CreateTradeModal
+        isOpen={isCreateModalOpen}
+        onClose={() => setIsCreateModalOpen(false)}
+      />
     </div>
   );
 };
