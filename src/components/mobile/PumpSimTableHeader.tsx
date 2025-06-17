@@ -1,19 +1,19 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Filter } from "lucide-react";
 
-interface CopyTradeTableHeaderProps {
+interface PumpSimTableHeaderProps {
   onCurrencyToggle?: (isSolMode: boolean) => void;
-  onSolBalClick?: () => void;
+  onSortClick?: () => void;
   onHeaderScroll?: (scrollLeft: number) => void;
   scrollLeft?: number;
 }
 
-const CopyTradeTableHeader = ({
+const PumpSimTableHeader = ({
   onCurrencyToggle,
-  onSolBalClick,
+  onSortClick,
   onHeaderScroll,
   scrollLeft = 0,
-}: CopyTradeTableHeaderProps) => {
+}: PumpSimTableHeaderProps) => {
   const [isSolMode, setIsSolMode] = useState(false);
   const scrollableRef = useRef<HTMLDivElement>(null);
 
@@ -23,8 +23,8 @@ const CopyTradeTableHeader = ({
     onCurrencyToggle?.(newMode);
   };
 
-  const handleSolBalClick = () => {
-    onSolBalClick?.();
+  const handleSortClick = () => {
+    onSortClick?.();
   };
 
   const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
@@ -37,17 +37,18 @@ const CopyTradeTableHeader = ({
       scrollableRef.current.scrollLeft = scrollLeft;
     }
   }, [scrollLeft]);
+
   return (
     <div className="px-4 py-3 border-b border-gray-800">
       <div className="flex items-center text-gray-400 text-sm">
         {/* Left: Fixed Basic Columns */}
         <div className="flex items-center flex-shrink-0">
-          {/* Wallet/SOL Balance Header */}
+          {/* Token/MCap Header */}
           <div className="min-w-[120px] text-left">
             <div className="flex items-center gap-1">
-              <span className="font-medium">Wallet / SOL Bal</span>
+              <span className="font-medium">Token / MCap</span>
               <button
-                onClick={handleSolBalClick}
+                onClick={handleSortClick}
                 className="flex items-center justify-center touch-manipulation min-h-[32px] min-w-[32px] p-1"
               >
                 <div className="w-0 h-0 border-l-[3px] border-r-[3px] border-b-[4px] border-transparent border-b-gray-400 hover:border-b-gray-300 transition-colors"></div>
@@ -55,35 +56,24 @@ const CopyTradeTableHeader = ({
             </div>
           </div>
 
-          {/* 1D PnL with dropdown - 10 spaces gap */}
+          {/* 5M Change - 10 spaces gap */}
           <div className="text-center min-w-[60px] ml-10">
             <div className="flex items-center justify-center gap-1">
-              <span className="font-medium">1D PnL</span>
+              <span className="font-medium">5M</span>
               <button className="flex items-center justify-center touch-manipulation min-h-[32px] min-w-[32px] p-1">
                 <div className="w-0 h-0 border-l-[3px] border-r-[3px] border-b-[4px] border-transparent border-b-gray-400 hover:border-b-gray-300 transition-colors"></div>
               </button>
             </div>
           </div>
 
-          {/* USD/SOL toggle button */}
+          {/* 1H Change */}
           <div className="text-center min-w-[60px] ml-4">
-            <button
-              onClick={handleCurrencyClick}
-              className="flex items-center justify-center gap-1 hover:text-gray-200 transition-colors w-full"
-            >
-              <span className="font-medium">{isSolMode ? "SOL" : "USD"}</span>
-              <svg
-                className="w-4 h-4 text-gray-400"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </button>
+            <div className="flex items-center justify-center gap-1">
+              <span className="font-medium">1H</span>
+              <button className="flex items-center justify-center touch-manipulation min-h-[32px] min-w-[32px] p-1">
+                <div className="w-0 h-0 border-l-[3px] border-r-[3px] border-b-[4px] border-transparent border-b-gray-400 hover:border-b-gray-300 transition-colors"></div>
+              </button>
+            </div>
           </div>
 
           {/* Filter icon */}
@@ -98,55 +88,60 @@ const CopyTradeTableHeader = ({
           className="flex items-center gap-4 flex-1 overflow-x-auto scrollbar-hide ml-4"
           onScroll={handleScroll}
         >
-          {/* 7D PnL Column */}
+          {/* 6H Change */}
           <div className="text-center min-w-[60px] flex-shrink-0">
             <div className="flex items-center justify-center gap-1">
-              <span className="font-medium">7D PnL</span>
+              <span className="font-medium">6H</span>
               <button className="flex items-center justify-center touch-manipulation min-h-[32px] min-w-[32px] p-1">
                 <div className="w-0 h-0 border-l-[3px] border-r-[3px] border-b-[4px] border-transparent border-b-gray-400 hover:border-b-gray-300 transition-colors"></div>
               </button>
             </div>
           </div>
 
-          {/* 30D Pr Column */}
+          {/* 24H Change */}
           <div className="text-center min-w-[60px] flex-shrink-0">
-            <span className="font-medium">30D Pr</span>
+            <div className="flex items-center justify-center gap-1">
+              <span className="font-medium">24H</span>
+              <button className="flex items-center justify-center touch-manipulation min-h-[32px] min-w-[32px] p-1">
+                <div className="w-0 h-0 border-l-[3px] border-r-[3px] border-b-[4px] border-transparent border-b-gray-400 hover:border-b-gray-300 transition-colors"></div>
+              </button>
+            </div>
           </div>
 
-          {/* 7D Win Rate Column */}
+          {/* Volume 24H */}
           <div className="text-center min-w-[80px] flex-shrink-0">
             <div className="flex items-center justify-center gap-1">
-              <span className="font-medium">7D Win Rate</span>
+              <span className="font-medium">Vol 24H</span>
               <button className="flex items-center justify-center touch-manipulation min-h-[32px] min-w-[32px] p-1">
                 <div className="w-0 h-0 border-l-[3px] border-r-[3px] border-b-[4px] border-transparent border-b-gray-400 hover:border-b-gray-300 transition-colors"></div>
               </button>
             </div>
           </div>
 
-          {/* 7D TXs Column */}
+          {/* Txns */}
           <div className="text-center min-w-[60px] flex-shrink-0">
             <div className="flex items-center justify-center gap-1">
-              <span className="font-medium">7D TXs</span>
+              <span className="font-medium">Txns</span>
               <button className="flex items-center justify-center touch-manipulation min-h-[32px] min-w-[32px] p-1">
                 <div className="w-0 h-0 border-l-[3px] border-r-[3px] border-b-[4px] border-transparent border-b-gray-400 hover:border-b-gray-300 transition-colors"></div>
               </button>
             </div>
           </div>
 
-          {/* 7D Toke Column */}
+          {/* Age */}
           <div className="text-center min-w-[60px] flex-shrink-0">
-            <span className="font-medium">7D Toke</span>
+            <span className="font-medium">Age</span>
           </div>
 
-          {/* 7D Loss/Win Column */}
+          {/* Holders */}
           <div className="text-center min-w-[40px] flex-shrink-0">
-            <span className="font-medium">7D</span>
+            <span className="font-medium">Holders</span>
           </div>
 
-          {/* 7D Avg Cost Column */}
+          {/* Liquidity */}
           <div className="text-center min-w-[80px] flex-shrink-0">
             <div className="flex items-center justify-center gap-1">
-              <span className="font-medium">7D Avg Cost</span>
+              <span className="font-medium">Liquidity</span>
               <button className="flex items-center justify-center touch-manipulation min-h-[32px] min-w-[32px] p-1">
                 <div className="w-0 h-0 border-l-[3px] border-r-[3px] border-b-[4px] border-transparent border-b-gray-400 hover:border-b-gray-300 transition-colors"></div>
               </button>
@@ -156,11 +151,11 @@ const CopyTradeTableHeader = ({
 
         {/* Right: Fixed Copy button column */}
         <div className="min-w-[60px] flex-shrink-0 flex justify-center">
-          <span className="font-medium">Copy</span>
+          <span className="font-medium">Action</span>
         </div>
       </div>
     </div>
   );
 };
 
-export default CopyTradeTableHeader;
+export default PumpSimTableHeader;
