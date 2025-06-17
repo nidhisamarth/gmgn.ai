@@ -64,7 +64,6 @@ This project was developed using **Lovable.dev**, an AI-powered frontend develop
 - Price alerts and notifications
 
 ### ✅ Mobile-First Design
-
 - Responsive design optimized for mobile devices
 - Touch-friendly interactions
 - Bottom navigation for mobile UX
