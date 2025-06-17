@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { Filter, ChevronDown } from "lucide-react";
+
+import React, { useState } from 'react';
+import { Filter, ChevronDown } from 'lucide-react';
 
 const MonitorControls = () => {
   const [showPortfolioDropdown, setShowPortfolioDropdown] = useState(false);
-  const [selectedPortfolio, setSelectedPortfolio] = useState("P1");
+  const [selectedPortfolio, setSelectedPortfolio] = useState('P1');
 
-  const portfolios = ["P1", "P2", "P3"];
+  const portfolios = ['P1', 'P2', 'P3'];
 
   const handlePortfolioClick = (portfolio: string) => {
     setSelectedPortfolio(portfolio);
@@ -20,7 +21,7 @@ const MonitorControls = () => {
           <Filter className="w-4 h-4" />
           <span className="text-sm">Filter</span>
         </button>
-
+        
         {/* Center controls */}
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2 bg-gray-800 px-3 py-1.5 rounded border border-gray-700">
@@ -31,11 +32,11 @@ const MonitorControls = () => {
             <span className="text-white text-sm">1</span>
             <ChevronDown className="w-3 h-3 text-gray-400" />
           </div>
-
+          
           <div className="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center">
             <div className="w-2 h-2 bg-white rounded-full"></div>
           </div>
-
+          
           <div className="flex items-center gap-1 bg-gray-800 px-2 py-1 rounded">
             <div className="w-3 h-3 flex flex-col justify-center">
               <div className="w-3 h-1 bg-white rounded-sm mb-0.5"></div>
@@ -52,12 +53,10 @@ const MonitorControls = () => {
           onClick={() => setShowPortfolioDropdown(!showPortfolioDropdown)}
           className="flex items-center gap-2 bg-gray-800 px-3 py-1.5 rounded border border-gray-700"
         >
-          <span className="text-white text-sm font-medium">
-            {selectedPortfolio}
-          </span>
+          <span className="text-white text-sm font-medium">{selectedPortfolio}</span>
           <ChevronDown className="w-3 h-3 text-gray-400" />
         </button>
-
+        
         {showPortfolioDropdown && (
           <div className="absolute right-0 top-full mt-1 bg-gray-800 border border-gray-700 rounded shadow-lg z-10">
             {portfolios.map((portfolio) => (
