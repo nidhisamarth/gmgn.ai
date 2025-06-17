@@ -10,9 +10,28 @@ import { Button } from "@/components/ui/button";
 
 const CopyTrade = () => {
   const [viewMode, setViewMode] = useState<"rank" | "copytrade">("rank");
+  const [isSolMode, setIsSolMode] = useState(false);
+  const [sortByBalance, setSortByBalance] = useState(false);
+  const [scrollLeft, setScrollLeft] = useState(0);
 
   const handleViewModeChange = (mode: "rank" | "copytrade") => {
     setViewMode(mode);
+  };
+
+  const handleCurrencyToggle = (solMode: boolean) => {
+    setIsSolMode(solMode);
+  };
+
+  const handleSolBalClick = () => {
+    setSortByBalance(!sortByBalance);
+  };
+
+  const handleHeaderScroll = (newScrollLeft: number) => {
+    setScrollLeft(newScrollLeft);
+  };
+
+  const handleDataScroll = (newScrollLeft: number) => {
+    setScrollLeft(newScrollLeft);
   };
 
   return (
@@ -29,8 +48,18 @@ const CopyTrade = () => {
         // Original Rank view with filters and table
         <>
           <CopyTradeFilters />
-          <CopyTradeTableHeader />
-          <CopyTradeWalletList />
+          <CopyTradeTableHeader
+            onCurrencyToggle={handleCurrencyToggle}
+            onSolBalClick={handleSolBalClick}
+            onHeaderScroll={handleHeaderScroll}
+            scrollLeft={scrollLeft}
+          />
+          <CopyTradeWalletList
+            isSolMode={isSolMode}
+            sortByBalance={sortByBalance}
+            onDataScroll={handleDataScroll}
+            scrollLeft={scrollLeft}
+          />
         </>
       ) : (
         // CopyTrade view with empty state
