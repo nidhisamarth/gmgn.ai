@@ -79,10 +79,6 @@ This project was developed using **Lovable.dev**, an AI-powered frontend develop
 - **React Hook Form** - Form handling and validation
 - **TanStack Query** - Server state management
 
-### Backend & Data
-- **Supabase** - Backend-as-a-Service for authentication and database
-- **Mock APIs** - Simulated trading and market data
-- **Real-time Updates** - WebSocket connections for live data
 
 ### Deployment
 - **GitHub Pages** - Static site hosting
