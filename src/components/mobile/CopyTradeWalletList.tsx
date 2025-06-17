@@ -325,42 +325,44 @@ const CopyTradeWalletList = ({
           className="flex items-center py-3 border-b border-gray-800/30 last:border-b-0"
         >
           {/* Left: Fixed Basic Columns */}
-          <div className="flex items-center gap-4 flex-shrink-0">
+          <div className="flex items-center flex-shrink-0">
             {/* Wallet Info */}
-            <div className="flex items-center gap-2 min-w-[120px]">
-              <div className="relative">
-                <div
-                  className={`w-10 h-10 rounded-full ${wallet.bgColor} flex items-center justify-center text-sm flex-shrink-0`}
-                >
-                  {wallet.avatar}
-                </div>
-                {shouldShowRank(wallet.rank) && (
+            <div className="min-w-[120px] text-left">
+              <div className="flex items-center gap-2">
+                <div className="relative">
                   <div
-                    className={`absolute -top-2 left-1/2 transform -translate-x-1/2 ${getRankBadgeColor(wallet.rank)} text-black text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[28px] text-center leading-none`}
+                    className={`w-10 h-10 rounded-full ${wallet.bgColor} flex items-center justify-center text-sm flex-shrink-0`}
                   >
-                    {wallet.rank}
-                    {getRankSuffix(wallet.rank)}
+                    {wallet.avatar}
                   </div>
-                )}
-              </div>
-
-              <div className="flex flex-col min-w-0 flex-1">
-                <div className="flex items-center gap-2">
-                  <span className="text-white text-sm font-medium">
-                    {wallet.address}
-                  </span>
-                  <span className="text-green-400">🔗</span>
-                  <span className="text-green-400">🌿</span>
+                  {shouldShowRank(wallet.rank) && (
+                    <div
+                      className={`absolute -top-2 left-1/2 transform -translate-x-1/2 ${getRankBadgeColor(wallet.rank)} text-black text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[28px] text-center leading-none`}
+                    >
+                      {wallet.rank}
+                      {getRankSuffix(wallet.rank)}
+                    </div>
+                  )}
                 </div>
-                <div className="flex items-center gap-1 text-gray-400 text-xs">
-                  <span className="text-gray-500">≡</span>
-                  <span>{wallet.balance}</span>
+
+                <div className="flex flex-col min-w-0 flex-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-white text-sm font-medium">
+                      {wallet.address}
+                    </span>
+                    <span className="text-green-400">🔗</span>
+                    <span className="text-green-400">🌿</span>
+                  </div>
+                  <div className="flex items-center gap-1 text-gray-400 text-xs">
+                    <span className="text-gray-500">≡</span>
+                    <span>{wallet.balance}</span>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* 1D PnL Column */}
-            <div className="text-center min-w-[60px]">
+            {/* 1D PnL Column - 10 spaces gap */}
+            <div className="text-center min-w-[60px] ml-10">
               <div
                 className={`${sortByBalance ? "text-white" : (wallet.rank === 3 || wallet.rank === 7) && !sortByBalance ? "" : getPnLTextColor(wallet.rank, wallet.pnl)} text-sm font-medium`}
               >
@@ -384,10 +386,10 @@ const CopyTradeWalletList = ({
             </div>
 
             {/* USD Column */}
-            <div className="min-w-[60px]"></div>
+            <div className="text-center min-w-[60px] ml-4"></div>
 
             {/* Filter space */}
-            <div className="w-4"></div>
+            <div className="w-4 ml-4 flex justify-center"></div>
           </div>
 
           {/* Middle: Scrollable columns container */}
