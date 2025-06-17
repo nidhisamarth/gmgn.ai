@@ -13,7 +13,6 @@ const NavigationTabs = () => {
     { name: "Monitor", path: "/monitor" },
     { name: "Follow", path: "/follow" },
     { name: "Holding", path: "/holding" },
-    { name: "PumpSim", path: "/pumpsim" },
   ];
 
   const getActiveTab = () => {
